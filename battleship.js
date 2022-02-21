@@ -1,24 +1,29 @@
-var model = {
+let model = {
 	boardSize: 7,
 	numShips: 3,
 	shipLength: 3,
 	shipsSunk: 0,
-	
+/*
 	ships: [
 		{ locations: [0, 0, 0], hits: ["", "", ""] },
 		{ locations: [0, 0, 0], hits: ["", "", ""] },
 		{ locations: [0, 0, 0], hits: ["", "", ""] }
 	],
-
+*/
 // original hard-coded values for ship locations
-/*
+
 	ships: [
 		{ locations: ["06", "16", "26"], hits: ["", "", ""] },
 		{ locations: ["24", "34", "44"], hits: ["", "", ""] },
 		{ locations: ["10", "11", "12"], hits: ["", "", ""] }
 	],
-*/
 
+	fire: function (guess) {
+		for (let i = 0; i < this.numShips; i++) {
+			let ship = this.ships[i];
+		}
+	}
+/*
 	fire: function(guess) {
 		for (var i = 0; i < this.numShips; i++) {
 			var ship = this.ships[i];
@@ -101,28 +106,26 @@ var model = {
 		}
 		return false;
 	}
-	
+	*/
 }; 
 
-
-var view = {
+let view = {
 	displayMessage: function(msg) {
-		var messageArea = document.getElementById("messageArea");
+		let messageArea = document.getElementById("messageArea");
 		messageArea.innerHTML = msg;
 	},
 
 	displayHit: function(location) {
-		var cell = document.getElementById(location);
+		let cell = document.getElementById(location);
 		cell.setAttribute("class", "hit");
 	},
 
 	displayMiss: function(location) {
-		var cell = document.getElementById(location);
+		let cell = document.getElementById(location);
 		cell.setAttribute("class", "miss");
 	}
-
-}; 
-
+};
+/*
 var controller = {
 	guesses: 0,
 
@@ -137,10 +140,10 @@ var controller = {
 		}
 	}
 }
-
+*/
 
 // helper function to parse a guess from the user
-
+/*
 function parseGuess(guess) {
 	var alphabet = ["A", "B", "C", "D", "E", "F", "G"];
 
@@ -161,11 +164,11 @@ function parseGuess(guess) {
 		}
 	}
 	return null;
-}
+}*/
 
 
 // event handlers
-
+/*
 function handleFireButton() {
 	var guessInput = document.getElementById("guessInput");
 	var guess = guessInput.value.toUpperCase();
@@ -174,7 +177,7 @@ function handleFireButton() {
 
 	guessInput.value = "";
 }
-
+*//*
 function handleKeyPress(e) {
 	var fireButton = document.getElementById("fireButton");
 
@@ -187,10 +190,10 @@ function handleKeyPress(e) {
 		return false;
 	}
 }
-
+*/
 
 // init - called when the page has completed loading
-
+/*
 window.onload = init;
 
 function init() {
@@ -206,7 +209,4 @@ function init() {
 	model.generateShipLocations();
 }
 
-
-
-
-
+*/
