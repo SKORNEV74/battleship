@@ -3,19 +3,11 @@ let model = {
 	numShips: 3,
 	shipLength: 3,
 	shipsSunk: 0,
-/*
+
 	ships: [
 		{ locations: [0, 0, 0], hits: ["", "", ""] },
 		{ locations: [0, 0, 0], hits: ["", "", ""] },
 		{ locations: [0, 0, 0], hits: ["", "", ""] }
-	],
-*/
-// original hard-coded values for ship locations
-
-	ships: [
-		{ locations: ["06", "16", "26"], hits: ["", "", ""] },
-		{ locations: ["24", "34", "44"], hits: ["", "", ""] },
-		{ locations: ["10", "11", "12"], hits: ["", "", ""] }
 	],
 
 	fire: function (guess) {
@@ -45,47 +37,46 @@ let model = {
 			}
 		}
 		return true;
-	}
-/*
-	generateShipLocations: function() {
-		var locations;
-		for (var i = 0; i < this.numShips; i++) {
+	},
+
+	generateShipLocations: function () {
+		let locations;
+		for (let i = 0; i < this.numShips; i++) {
 			do {
 				locations = this.generateShip();
 			} while (this.collision(locations));
 			this.ships[i].locations = locations;
 		}
-		console.log("Ships array: ");
-		console.log(this.ships);
 	},
 
-	generateShip: function() {
-		var direction = Math.floor(Math.random() * 2);
-		var row, col;
+	generateShip: function () {
+		let direction = Math.floor(Math.random() * 2);
+		let row, col;
 
-		if (direction === 1) { // horizontal
+		if (direction === 1) {
 			row = Math.floor(Math.random() * this.boardSize);
-			col = Math.floor(Math.random() * (this.boardSize - this.shipLength + 1));
-		} else { // vertical
-			row = Math.floor(Math.random() * (this.boardSize - this.shipLength + 1));
+			col = Math.floor(Math.random() * (this.boardSize - this.shipLength));
+		} else {
+			row = Math.floor(Math.random() * (this.boardSize - this.shipLength));
 			col = Math.floor(Math.random() * this.boardSize);
 		}
 
-		var newShipLocations = [];
-		for (var i = 0; i < this.shipLength; i++) {
+		let newShipLocations = [];
+		for (let i = 0; i < this.shipLength; i++) {
 			if (direction === 1) {
 				newShipLocations.push(row + "" + (col + i));
 			} else {
 				newShipLocations.push((row + i) + "" + col);
 			}
 		}
+
 		return newShipLocations;
 	},
 
-	collision: function(locations) {
-		for (var i = 0; i < this.numShips; i++) {
-			var ship = this.ships[i];
-			for (var j = 0; j < locations.length; j++) {
+	collision: function (locations) {
+		for (let i; i < this.numShips; i++) {
+			let ship = model.ships[i];
+			for (let j; j < locations.length; j++) {
 				if (ship.locations.indexOf(locations[j]) >= 0) {
 					return true;
 				}
@@ -93,6 +84,13 @@ let model = {
 		}
 		return false;
 	}
+/*
+	generateShipLocations: function() {
+
+		console.log("Ships array: ");
+		console.log(this.ships);
+	},
+
 	*/
 }; 
 
@@ -148,22 +146,19 @@ function parseGuess(guess) {
 	}
 	return null;
 }
-// event handlers
-/*
+
 function handleFireButton() {
-	var guessInput = document.getElementById("guessInput");
-	var guess = guessInput.value.toUpperCase();
+	let guessInput = document.getElementById("guessInput");
+	let guess = guessInput.value.toUpperCase();
 
 	controller.processGuess(guess);
 
 	guessInput.value = "";
 }
-*//*
-function handleKeyPress(e) {
-	var fireButton = document.getElementById("fireButton");
 
-	// in IE9 and earlier, the event object doesn't get passed
-	// to the event handler correctly, so we use window.event instead.
+function handleKeyPress(e) {
+	let fireButton = document.getElementById("fireButton");
+
 	e = e || window.event;
 
 	if (e.keyCode === 13) {
@@ -171,23 +166,15 @@ function handleKeyPress(e) {
 		return false;
 	}
 }
-*/
-
-// init - called when the page has completed loading
-/*
-window.onload = init;
 
 function init() {
-	// Fire! button onclick handler
-	var fireButton = document.getElementById("fireButton");
+	let fireButton = document.getElementById("fireButton");
 	fireButton.onclick = handleFireButton;
 
-	// handle "return" key press
-	var guessInput = document.getElementById("guessInput");
+	let guessInput = document.getElementById("guessInput");
 	guessInput.onkeypress = handleKeyPress;
 
-	// place the ships on the game board
 	model.generateShipLocations();
 }
 
-*/
+window.onload = init;
