@@ -84,14 +84,6 @@ let model = {
 		}
 		return false;
 	}
-/*
-	generateShipLocations: function() {
-
-		console.log("Ships array: ");
-		console.log(this.ships);
-	},
-
-	*/
 }; 
 
 let view = {
